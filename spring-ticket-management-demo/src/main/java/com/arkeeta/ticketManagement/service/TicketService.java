@@ -16,6 +16,5 @@ public interface TicketService {
     void deleteTicket(Ticket ticket);
 
     List<Ticket> searchTicket(String title);
-
-    List<Ticket> getAllTicketsWithNoDesc();
+);
 }
