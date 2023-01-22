@@ -24,17 +24,6 @@ public class TicketController {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-//    @GetMapping("/tickets")
-//    public List<Ticket> showTickets(Model model){
-//        model.addAttribute
-//                ("tickets",
-//                        ticketService.findAll(
-//                                Sort.by(Sort.Direction.ASC, "title")
-//                        )
-//                );
-//        return ticketService.findAll(Sort.by(Sort.Direction.ASC, "createDate"));
-//    }
-
     @RequestMapping("/tickets")
     public String showTickets(Model model){
 
@@ -63,40 +52,17 @@ public class TicketController {
         return "view-page";
     }
 
-//    @PostMapping("/new-ticket")
-//    public Ticket createNewTicket(@RequestBody Ticket ticket){
-//        ticket.setId(0);
-//        return ticketService.addOrUpdateTicket(ticket);
-//    }
-//
-//    @GetMapping("/update-ticket")
-//    public Ticket updateTicket(@RequestBody Ticket ticket){
-//        return ticketService.addOrUpdateTicket(ticket);
-//    }
-
     @PostMapping("/new-update-ticket")
     public String createNewTicket(@ModelAttribute("ticket") Ticket ticket){
         ticketService.addOrUpdateTicket(ticket);
         return "redirect:/admin/tickets";
     }
 
-
-//    @DeleteMapping("/delete-ticket")
-//    public void deleteTicket(@RequestBody Ticket ticket){
-//        ticketService.deleteTicket(ticket);
-//    }
-
     @GetMapping("/delete-ticket")
     public String deleteTicket(@RequestParam("id") int id){
         ticketService.deleteTicket(ticketService.findById(id));
         return "redirect:/admin/tickets";
     }
-
-
-//    @GetMapping("/search-ticket")
-//    public List<Ticket> searchTicket(@RequestBody String title){
-//        return ticketService.searchTicket(title);
-//    }
 
     @GetMapping("/search-ticket")
     public String searchTicket(@RequestParam("title") String title, Model model){
