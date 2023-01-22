@@ -39,36 +39,4 @@ public class TicketServiceImpl implements TicketService{
     public List<Ticket> searchTicket(String title) {
         return ticketRepo.findByTitle(title);
     }
-
-//    @Override
-//    public List<Ticket> getAllTicketsWithNoDesc() {
-//
-//        Ticket ticket = new Ticket();
-//        ticket.setShortDesc("");
-//        ExampleMatcher exampleMatcher = ExampleMatcher
-//                .matching()
-//                .withMatcher("shortDesc", ExampleMatcher
-//                        .GenericPropertyMatchers
-//                        .exact())
-//                .withIgnorePaths("id","title","createDate");
-//
-//        Example<Ticket> example = Example.of(ticket, exampleMatcher);
-//        return ticketRepo.findAll(example);
-//    }
-
-    @Override
-    public List<Ticket> getAllTicketsWithNoDesc() {
-
-        Ticket ticket = new Ticket();
-        ticket.setId(52);
-        ExampleMatcher exampleMatcher = ExampleMatcher
-                .matching()
-//                .withMatcher("shortDesc", ExampleMatcher
-//                        .GenericPropertyMatchers
-//                        .exact())
-                .withIgnorePaths("title","createDate");
-
-        Example<Ticket> example = Example.of(ticket, exampleMatcher);
-        return ticketRepo.findAll(example);
-    }
 }
